@@ -4,7 +4,7 @@
   "description": "wkn is easy possible to run a script operation in a background thread separate from the main execution thread of a web application.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,20 @@
   "bugs": {
     "url": "https://github.com/hand-dot/wkn/issues"
   },
-  "homepage": "https://github.com/hand-dot/wkn#readme"
+  "homepage": "https://github.com/hand-dot/wkn#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.4.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.5.0",
+    "webpack": "^4.17.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {}
 }
