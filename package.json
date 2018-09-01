@@ -1,0 +1,22 @@
+{
+  "name": "wkn",
+  "version": "1.0.0",
+  "description": "wkn is easy possible to run a script operation in a background thread separate from the main execution thread of a web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hand-dot/wkn.git"
+  },
+  "keywords": [
+    "webworker"
+  ],
+  "author": "hand-dot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hand-dot/wkn/issues"
+  },
+  "homepage": "https://github.com/hand-dot/wkn#readme"
+}
