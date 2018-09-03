@@ -12,11 +12,11 @@ describe('Test of wkn', () => {
   })
 
   it('wkn work fine!', async () => {
-    const data = await page.evaluate(`(async() => {
-      return wkn((e) => {
-        postMessage(e.data + '!');
-      }, 'hoge')
-    })()`);
+    const func = (e) => {
+      postMessage(e.data + '!');
+    };
+    const arg = 'hoge';
+    const data = await page.evaluate(`(async() => wkn(${func.toString()}, '${arg}'))()`);
     expect(data).toBe('hoge!')
   })
 })
