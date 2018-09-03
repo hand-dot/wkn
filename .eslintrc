@@ -1,16 +1,21 @@
 {
-    "extends": "eslint:recommended",
-    "rules": {
-     },
-    "env": {
-      "serviceworker": true,
-      "browser": true,
-      "es6": true,
-      "jest": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "sourceType": "module",
-      "allowImportExportEverywhere": true
-    }
+  "extends": "eslint:recommended",
+  "rules": {},
+  "env": {
+    "serviceworker": true,
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "jestPuppeteer": true
   }
+}
