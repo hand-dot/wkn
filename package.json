@@ -4,7 +4,7 @@
   "description": "wkn is easy possible to run a script operation in a background thread from module bundler.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "babel -d ./ src",
     "test": "jest"
   },
   "repository": {
