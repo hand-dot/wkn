@@ -1,4 +1,4 @@
-import { wkn } from '../';
+import { wkn } from '../src';
 
 describe('Test of wkn', () => {
   beforeAll(async () => {
