@@ -1,4 +1,6 @@
-import { wkn } from '../src';
+import {
+  wkn
+} from '../src';
 
 describe('Test of wkn', () => {
   beforeAll(async () => {
@@ -8,11 +10,7 @@ describe('Test of wkn', () => {
     })
   });
   it('wkn get resolve when good function', async () => {
-    const func = (e) => {
-      postMessage(e.data + '!');
-    }
-    const arg = 'hoge';
-    await expect(page.evaluate(`(async() => wkn(${func.toString()}, '${arg}'))()`)).resolves.toBe('hoge!');
+    await expect(page.evaluate(`(async () => wkn((arg) => arg + "!", "hoge"))()`)).resolves.toBe('hoge!');
   });
   it('wkn get rejects when bat function', async () => {
     const func = `(e) => {
