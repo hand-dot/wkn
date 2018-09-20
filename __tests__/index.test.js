@@ -13,10 +13,6 @@ describe('Test of wkn', () => {
     await expect(page.evaluate(`(async () => wkn((arg) => arg + "!", "hoge"))()`)).resolves.toBe('hoge!');
   });
   it('wkn get rejects when bat function', async () => {
-    const func = `(e) => {
-      postMessage(a + '!');
-    }`
-    const arg = 'hoge';
-    await expect(page.evaluate(`(async() => wkn(${func}, '${arg}'))()`)).rejects.toThrow();
+    await expect(page.evaluate(`(wkn((arg) => arg.map( _ =>  _ + '!'), {}))()`)).rejects.toThrow();
   });
 })
