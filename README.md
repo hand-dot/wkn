@@ -22,40 +22,50 @@ import wkn from 'wkn';
 /**
 * Takes function and arguments, moves the processing to another thread,
 * and receives the processing result on Promise.
-* @param  {Function}  function to have retunrn value.
+* @param {Function} function to have retunrn value. (Be processed in Web Worker context)
 * @param  {...*}  [arguments] arguments
 * @returns  {Promise} Returns Processing result as Promise
 */
 
-wkn(arg => arg + 1, 100).then((value) => {
-  console.log(value); // 101
-});
+// Simple usage
+wkn(arg => arg + 1, 100)
+  .then((value) => {
+    console.log(value); // 101
+  });
 
-wkn((arg1, arg2) => `${arg1}!${arg2}!`, 'hoge', 'foo').then((value) => {
-  console.log(value); // hoge!foo!
-});
+// Two arguments
+wkn((arg1, arg2) => `${arg1}!${arg2}!`, 'hoge', 'foo')
+  .then((value) => {
+    console.log(value); // hoge!foo!
+  });
 
+// Use moment.js
 wkn((years, months, days, hours, minutes, seconds) => {
   importScripts('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js');
   const m = moment(new Date(years, months, days, hours, minutes, seconds));
   return m.hours();
-}, 2011, 2, 12, 5, 0, 0).then((value) => {
-  console.log(value); // 5
-});
+}, 2011, 2, 12, 5, 0, 0)
+  .then((value) => {
+    console.log(value); // 5
+  });
 
+// Heavy processing
 wkn(() => {
   let num = 0;
   for (let i = 0; i < 100000000; i++) {
     num += i;
   }
   return num;
-}).then((value) => {
-  console.log(value); // 4999999950000000
-});
+})
+  .then((value) => {
+    console.log(value); // 4999999950000000
+  });
 
-wkn(arg => arg.map(_ => `${_}!`), {}).then((value) => {
-  console.log(value); // not fire
-}, (reason) => {
-  console.error(reason); // arg.map is not a functio
-});
+// onRejected
+wkn(arg => arg.map(_ => `${_}!`), {})
+  .then((value) => {
+    console.log(value); // not fire
+  }, (reason) => {
+    console.error(reason); // arg.map is not a functio
+  });
 ```
