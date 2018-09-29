@@ -12,7 +12,10 @@ describe('Test of wkn', () => {
   it('wkn get resolve when good function', async () => {
     await expect(page.evaluate(`(async () => wkn((arg) => arg + "!", "hoge"))()`)).resolves.toBe('hoge!');
   });
+  it('wkn get resolve when some args function', async () => {
+    await expect(page.evaluate(`(async () => wkn((arg1, arg2) => arg1 + "!" + arg2 + "!", "hoge", "foo"))()`)).resolves.toBe('hoge!foo!');
+  });
   it('wkn get rejects when bat function', async () => {
-    await expect(page.evaluate(`(wkn((arg) => arg.map( _ =>  _ + '!'), {}))()`)).rejects.toThrow();
+    await expect(page.evaluate(`(async () => wkn((arg) => arg.map( _ =>  _ + '!'), {}))()`)).rejects.toThrowError('arg.map is not a function');
   });
 })
