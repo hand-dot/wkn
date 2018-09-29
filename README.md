@@ -13,7 +13,9 @@ wkn is easy possible to run the processing to another thread.
 * Light
 
 # Installing
-`$ npm install wkn`
+```bash
+$ npm install wkn
+```
 
 # Example
 ```javascript  
