@@ -3,13 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var wkn = exports.wkn = function wkn(func) {
+var wkn = function wkn(func) {
   for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     arg[_key - 1] = arguments[_key];
   }
 
   var data = 'onmessage = (e) => {\n  new Promise((resolve, reject) => {\n    try{\n      resolve(' + Function('return' + ' ' + func) + '().apply(this, e.data));\n    }catch(e){\n      reject(e);\n    }\n  }).then(res =>{\n    postMessage(res);\n  },err =>{\n    postMessage(\'wknERROR: \' + err.message);\n  });\n}';
-  var blob = new Blob([data], { type: 'text/javascript' });
+  var blob = new Blob([data], {
+    type: 'text/javascript'
+  });
   var url = window.URL.createObjectURL(blob);
   var worker = new Worker(url);
   worker.postMessage(arg);
@@ -24,3 +26,5 @@ var wkn = exports.wkn = function wkn(func) {
     };
   });
 };
+
+exports.default = wkn;
