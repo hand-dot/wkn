@@ -3,6 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+/**
+ * Takes function and arguments, moves the processing to another thread, 
+ * and receives the processing result on Promise.
+ * @param {Function} function to have retunrn value. 
+ * @param {...*} [arguments] arguments
+ * @returns {Promise} Returns Processing result as Promise
+ */
 var wkn = function wkn(func) {
   for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     arg[_key - 1] = arguments[_key];
