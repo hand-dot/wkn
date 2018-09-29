@@ -15,7 +15,7 @@ var wkn = function wkn(func) {
     arg[_key - 1] = arguments[_key];
   }
 
-  var data = 'onmessage = (e) => {\n  new Promise((resolve, reject) => {\n    try{\n      resolve(' + Function('return' + ' ' + func) + '().apply(this, e.data));\n    }catch(e){\n      reject(e);\n    }\n  }).then(res =>{\n    postMessage(res);\n  },err =>{\n    postMessage(\'wknERROR: \' + err.message);\n  });\n}';
+  var data = 'onmessage = (e) => {\n  new Promise((resolve, reject) => {\n    try{\n      resolve(' + Function('return' + ' ' + func) + '().apply(this, e.data));\n    }catch(e){\n      reject(e);\n    }\n  }).then(res =>{\n    postMessage(JSON.parse(JSON.stringify(res)));\n  },err =>{\n    postMessage(\'wknERROR: \' + err.message);\n  });\n}';
   var blob = new Blob([data], {
     type: 'text/javascript'
   });
