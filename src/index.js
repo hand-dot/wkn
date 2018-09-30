@@ -35,6 +35,6 @@ const wkn = (func, ...arg) => {
       worker.terminate();
     };
   });
-};
+}
 
-export default wkn;
+module.exports = wkn;
