@@ -1,5 +1,4 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -23,10 +22,7 @@ module.exports = {
     path: path.resolve(__dirname),
     publicPath: '/',
     filename: 'index.js',
+    library: 'wkn',
+    libraryTarget: 'umd'
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin()
-    ]
-  }
 };
