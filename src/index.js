@@ -14,7 +14,7 @@ const wkn = (func, ...arg) => {
       reject(e);
     }
   }).then(res =>{
-    postMessage(JSON.parse(JSON.stringify(res)));
+    postMessage(res);
   },err =>{
     postMessage('wknERROR: ' + err.message);
   });
