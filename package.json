@@ -1,6 +1,6 @@
 {
   "name": "wkn",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "wkn is easy possible to run a script operation in a background thread from module bundler.",
   "main": "index.js",
   "scripts": {
